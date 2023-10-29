@@ -5,39 +5,39 @@ info:
     Jelaskan disini apa saja yang perlu dijelaskan
     termasuk informasi yang diperlukan untuk dinilai
     term of service isi dari link repo dari swagger ini
-  termsOfService: https://github.com/jscroot/examples/tree/main/api/swagger
+  termsOfService: https://github.com/mytodolist2/mytodolist2.github.io/tree/main/swagger
   contact:
-    email: awangga@gmail.com
+    email: dirgafebrian45@gmail.com
   license:
-    name: Peda Package
-    url: https://pkg.go.dev/github.com/petapedia/peda
-  version: 1.0.11
+    name: Mytodolist Package
+    url: https://pkg.go.dev/github.com/mytodolist1/be_p3
+  version: 0.0.8
 externalDocs:
   description: Repo GCF
-  url: https://petapedia.github.io/gcf/
+  url: https://mytodolist1.github.io/cloudfunction_todo/
 servers:
-  - url: https://asia-southeast2-awangga.cloudfunctions.net
+  - url: https://asia-southeast2-mytodolist-402507.cloudfunctions.net
 tags:
-  - name: data
-    description: Data Geo Spasial
+  - name: user
+    description: Data User
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/get/
+      url: https://mytodolist1.github.io/cloudfunction_todo/GET/
   - name: auth
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/post/
-  - name: user
+      url: https://mytodolist1.github.io/cloudfunction_todo/POST/
+  - name: --
     description: Get Token and Authorize
 paths:
-  /petapedia:
+  /mytodolist:
     get:
       tags:
-        - data
-      summary: Get Data Geospasial
-      description: List Data Geospasial
-      operationId: getGeoJSON
+        - user
+      summary: Get All User
+      description: List Data User
+      operationId: getAllUser
       responses:
         '200':
           description: successful operation
@@ -46,10 +46,10 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Peta'
+                  $ref: '#/components/schemas/User'
         '400':
           description: Invalid status value
-  /petapedia-post:
+  /mytodolist-post:
     post:
       tags:
         - auth
@@ -76,29 +76,36 @@ paths:
             - read:apiKey
 components:
   schemas:
-    Peta:
+    User:
       type: object
       properties:
-        type:
+        id:
           type: string
-        geometry:
-          type: object
-          properties:
-            type: 
-              type: string
-            coordinates: 
-              type: array
-        properties:
-          type: object
-          properties:
-            name:
-              type: string
+        email:
+          type: string
+          # properties:
+          #   type: 
+          #     type: string
+            # coordinates: 
+            #   type: array
+        username:
+          type: string
+          # properties:
+          #   name:
+          #     type: string
+        password:
+          type: string
+          # properties:
+          #   name:
+          #     type: string
+        role:
+          type: string
     Auth:
       type: object
       properties:
         username:
           type: string
-          example: petped
+          example: budiman
         password:
           type: string
           example: secret
