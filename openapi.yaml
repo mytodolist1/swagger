@@ -50,7 +50,7 @@ paths:
         '400':
           description: Invalid status value
   
-  /mytodolist/{id}:
+  /mytodolist/todo/{id}:
     get:
       tags:
         - todo
@@ -94,30 +94,32 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-    # post:
-    #   tags:
-    #     - todo
-    #   summary: Post Todo
-    #   description: Insert Todo
-    #   operationId: InsertTodo
-    #   requestBody:
-    #     content:
-    #       application/json:
-    #         schema:
-    #           $ref: '#/components/schemas/Todo'
-    #   responses:
-    #     '200':
-    #       description: successful operation
-    #       content:
-    #         application/json:
-    #           schema:
-    #             $ref: '#/components/schemas/AuthResponse'
-    #     '405':
-    #       description: Invalid input
-    #   security:
-    #     - token:
-    #         - write:apiKey
-    #         - read:apiKey
+
+    /mytodolist-post/todo:
+    post:
+      tags:
+        - todo
+      summary: Post Todo
+      description: Insert Todo
+      operationId: InsertTodo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '405':
+          description: Invalid input
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
 components:
   schemas:
     User:
