@@ -95,7 +95,7 @@ paths:
             - write:apiKey
             - read:apiKey
 
-    /mytodolist-post/todo:
+  /mytodolist-post/todo:
     post:
       tags:
         - todo
