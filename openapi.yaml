@@ -31,7 +31,7 @@ tags:
   - name: todo
     description: Data Todo
 paths:
-  /mytodolist:
+  /mytodolist/User:
     get:
       tags:
         - user
