@@ -125,21 +125,10 @@ components:
           type: string
         email:
           type: string
-          # properties:
-          #   type: 
-          #     type: string
-            # coordinates: 
-            #   type: array
         username:
           type: string
-          # properties:
-          #   name:
-          #     type: string
         password:
           type: string
-          # properties:
-          #   name:
-          #     type: string
         role:
           type: string
     Auth:
