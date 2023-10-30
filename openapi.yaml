@@ -131,6 +131,17 @@ components:
           type: string
         role:
           type: string
+    Todo:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        isdone:
+          type: bool
     Auth:
       type: object
       properties:
