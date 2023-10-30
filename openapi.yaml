@@ -50,13 +50,13 @@ paths:
         '400':
           description: Invalid status value
   
-  /mytodolist:
+  /mytodolist/{id}:
     get:
       tags:
         - todo
-      summary: Get All Todo
-      description: List Data Todo
-      operationId: getAllTodo
+      summary: Get Todo by ID
+      description: " "
+      operationId: getTodoById
       responses:
         '200':
           description: successful operation
