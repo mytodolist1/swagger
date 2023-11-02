@@ -27,7 +27,7 @@ tags:
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://mytodolist1.github.io/cloudfunction_todo/POST/
+      url: https://mytodolist1.github.io/cloudfunction_todo/post-login/
   - name: todo
     description: Data Todo
 paths:
@@ -69,7 +69,7 @@ paths:
         '400':
           description: Invalid status value
 
-  /mytodolist-post:
+  /mytodolist-login:
     post:
       tags:
         - auth
