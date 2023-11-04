@@ -5,13 +5,13 @@ info:
     Jelaskan disini apa saja yang perlu dijelaskan
     termasuk informasi yang diperlukan untuk dinilai
     term of service isi dari link repo dari swagger ini
-  termsOfService: https://github.com/mytodolist2/mytodolist2.github.io/tree/main/swagger
+  termsOfService: https://github.com/mytodolist1/swagger
   contact:
     email: dirgafebrian45@gmail.com
   license:
     name: Mytodolist Package
     url: https://pkg.go.dev/github.com/mytodolist1/be_p3
-  version: 0.0.8
+  version: 0.0.9
 externalDocs:
   description: Repo GCF
   url: https://mytodolist1.github.io/cloudfunction_todo/
@@ -30,6 +30,7 @@ tags:
       url: https://mytodolist1.github.io/cloudfunction_todo/post-login/
   - name: todo
     description: Data Todo
+
 paths:
   /mytodolist/User:
     get:
@@ -49,25 +50,28 @@ paths:
                   $ref: '#/components/schemas/User'
         '400':
           description: Invalid status value
-  
-  /mytodolist/todo/{id}:
-    get:
+
+  /mytodolist-register:
+    post:
       tags:
-        - todo
-      summary: Get Todo by ID
-      description: " "
-      operationId: getTodoById
+        - user
+      summary: Register User
+      description: Register User
+      operationId: Register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Todo'
-        '400':
-          description: Invalid status value
+                $ref: '#/components/schemas/user'
+        '405':
+          description: Invalid input
 
   /mytodolist-login:
     post:
