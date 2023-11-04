@@ -37,7 +37,7 @@ paths:
     get:
       tags:
         - user
-      summary: Get user by user name
+      summary: Get user by username
       description: ''
       operationId: getUserByName
       parameters:
