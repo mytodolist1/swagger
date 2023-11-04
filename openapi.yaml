@@ -40,7 +40,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserArray'
+                $ref: '#/components/schemas/User'
 
   /mytodolist/{username}:
     get:
