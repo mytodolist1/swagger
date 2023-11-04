@@ -131,14 +131,19 @@ components:
       properties:
         id:
           type: string
+          example: b12wqde33
         email:
           type: string
+          example: hehe@gmail.com
         username:
           type: string
+          example: hehe
         password:
           type: string
+          exmaple: secret
         role:
           type: string
+          example: user
     Todo:
       type: object
       properties:
@@ -156,7 +161,7 @@ components:
       properties:
         username:
           type: string
-          example: budiman
+          example: hehe
         password:
           type: string
           example: secret
