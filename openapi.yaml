@@ -33,7 +33,7 @@ tags:
     description: Data Todo
 
 paths:
-  /mytodolist-GetUserByUsername/{username}:
+  /mytodolist-GetUserByUsername:
     get:
       tags:
         - user
