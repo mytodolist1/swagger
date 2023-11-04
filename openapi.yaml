@@ -28,7 +28,7 @@ tags:
 
 paths:
   /mytodolist:
-      get:
+    get:
       tags:
         - user
       summary: Get all users
