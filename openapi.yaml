@@ -131,12 +131,16 @@ components:
       properties:
         email:
           type: string
+          example: hehe12@gmail.com
         username:
           type: string
+          example: parjoo
         password:
           type: string
+          example: parjoo
         role:
           type: string
+          example: user
     Todo:
       type: object
       properties:
