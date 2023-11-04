@@ -21,19 +21,28 @@ servers:
 tags:
   - name: user
     description: Data User
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://mytodolist1.github.io/cloudfunction_todo/GET/
   - name: auth
     description: Auth to Access to API
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://mytodolist1.github.io/cloudfunction_todo/post-login/
   - name: todo
     description: Data Todo
 
 paths:
-  /mytodolist-GetUserByUsername:
+  /mytodolist:
+      get:
+      tags:
+        - user
+      summary: Get all users
+      description: ''
+      operationId: getUsers
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserArray'
+
+  /mytodolist/{username}:
     get:
       tags:
         - user
