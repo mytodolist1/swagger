@@ -97,13 +97,6 @@ paths:
       summary: Change Password
       description: Change Password
       operationId: changePassword
-      parameters:
-        - name: username
-          in: path
-          description: 'Masukkan username yang ingin di ubah passwordnya.'
-          required: true
-          schema:
-            type: string
       requestBody:
         content:
           application/json:
@@ -221,10 +214,13 @@ components:
       properties:
         username:
           type: string
-        password:
+          example: tejo
+        oldpassword:
           type: string
+          example: secret
         newpassword:
           type: string
+          example: secret123
 
     UserResponse:
       type: object
