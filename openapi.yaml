@@ -104,12 +104,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: password
-          in: path
-          description: 'Masukkan password yang ingin di ubah.'
-          required: true
-          schema:
-            type: string
       requestBody:
         content:
           application/json:
