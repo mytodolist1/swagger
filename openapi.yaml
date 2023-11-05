@@ -100,7 +100,7 @@ paths:
       parameters:
         - name: username
           in: path
-          description: 'Masukkan username'
+          description: 'Masukkan username yang ingin di ubah passwordnya.'
           required: true
           schema:
             type: string
@@ -108,7 +108,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/ChangePassUser'
       responses:
         '200':
           description: successful operation
@@ -214,6 +214,16 @@ components:
         password:
           type: string
         role:
+          type: string
+
+    ChangePassUser:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        newpassword:
           type: string
 
     UserResponse:
