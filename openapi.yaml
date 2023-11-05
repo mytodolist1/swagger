@@ -98,9 +98,9 @@ paths:
       description: Change Password
       operationId: changePassword
       parameters:
-        - name: username
+        - name: password
           in: path
-          description: 'Masukkan username yang ingin di ubah passwordnya.'
+          description: 'Masukkan password yang ingin di ganti.'
           required: true
           schema:
             type: string
@@ -209,22 +209,16 @@ components:
       properties:
         email:
           type: string
+          example: tejo@gmail.com
         username:
           type: string
+          example: tejo
         password:
           type: string
+          example: secret
         role:
           type: string
-
-    ChangePassUser:
-      type: object
-      properties:
-        oldpassword:
-          type: string
-          example: secret
-        newpassword:
-          type: string
-          example: secret123
+          example: user
 
     UserResponse:
       type: object
