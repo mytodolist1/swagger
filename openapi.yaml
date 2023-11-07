@@ -98,9 +98,9 @@ paths:
       description: Update User
       operationId: updateUser
       parameters:
-        - name: username
+        - name: ID
           in: path
-          description: 'Masukkan username yang ingin di update.'
+          description: 'Masukkan ID user yang ingin di update.'
           required: true
           schema:
             type: string
@@ -124,38 +124,38 @@ paths:
             - read:apiKey
 
 
-  # /mytodolist-changepass:
-  #   put:
-  #     tags:
-  #       - User
-  #     summary: Change Password
-  #     description: Change Password
-  #     operationId: changePassword
-  #     parameters:
-  #       - name: password
-  #         in: path
-  #         description: 'Masukkan password yang ingin di ganti.'
-  #         required: true
-  #         schema:
-  #           type: string
-  #     requestBody:
-  #       content:
-  #         application/json:
-  #           schema:
-  #             $ref: '#/components/schemas/User'
-  #     responses:
-  #       '200':
-  #         description: successful operation
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: '#/components/schemas/UserResponse'
-  #       '405':
-  #         description: Invalid input
-  #     security:
-  #       - token:
-  #           - write:apiKey
-  #           - read:apiKey
+  /mytodolist-changepass:
+    put:
+      tags:
+        - User
+      summary: Change Password
+      description: Change Password
+      operationId: changePassword
+      parameters:
+        - name: username
+          in: path
+          description: 'Masukkan username user yang ingin di ganti passwordnya.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '405':
+          description: Invalid input
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
 
   /mytodolist-deleteuser:
     delete:
