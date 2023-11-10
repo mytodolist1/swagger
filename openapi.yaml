@@ -230,10 +230,13 @@ components:
       properties:
         email:
           type: string
+          example: tejoko@gmail.com
         username:
           type: string
+          example: tejoko
         password:
           type: string
+          example: secret
         role:
           type: string
           example: user
@@ -252,13 +255,10 @@ components:
           properties:
             email:
               type: string
-              example: tejoko@gmail.com
             username:
               type: string
-              example: tejoko
             password:
               type: string
-              example: secret
             role:
               type: string
               example: user
