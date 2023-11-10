@@ -123,7 +123,6 @@ paths:
             - write:apiKey
             - read:apiKey
 
-
   /mytodolist-changepass:
     put:
       tags:
@@ -180,10 +179,6 @@ paths:
                 $ref: '#/components/schemas/UserResponse'
         '405':
           description: Invalid input
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
 
   /mytodolist-login:
     post:
