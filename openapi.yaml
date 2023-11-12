@@ -51,7 +51,7 @@ paths:
       operationId: getUserByUsername
       parameters:
         - name: username
-          in: query
+          in: path
           description: 'Masukkan username yang terdaftar.'
           required: true
           schema:
