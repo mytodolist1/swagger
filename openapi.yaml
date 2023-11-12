@@ -103,7 +103,7 @@ paths:
           description: 'Masukkan ID user yang ingin di update.'
           required: true
           schema:
-            type: string
+            type: ObjectId
       requestBody:
         content:
           application/json:
@@ -173,8 +173,8 @@ paths:
           description: Invalid input
       security:
         - token:
-            - write:apiKey
-            - read:apiKey
+            - write: apiKey
+            - read: apiKey
 
   /mytodolist-login:
     post:
@@ -199,8 +199,8 @@ paths:
           description: Invalid input
       security:
         - token:
-            - write:apiKey
-            - read:apiKey
+            - write: apiKey
+            - read: apiKey
 
   /mytodolist-post/todo:
     post:
@@ -225,8 +225,8 @@ paths:
           description: Invalid input
       security:
         - token:
-            - write:apiKey
-            - read:apiKey
+            - write: apiKey
+            - read: apiKey
 components:
   schemas:
     User:
