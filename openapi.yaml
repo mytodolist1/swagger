@@ -248,6 +248,9 @@ components:
     UpdateUser:
       type: object
       properties:
+        _id:
+          type: string
+          example: 6550a8f0b5b4a0a7f89941aa
         email:
           type: string
           example: tejoko@gmail.com
@@ -258,9 +261,9 @@ components:
     ChangePassUser:
       type: object
       properties:
-        username:
-          type: string
-          example: tejoko
+        # username:
+        #   type: string
+        #   example: tejoko
         password:
           type: string
           example: secret
