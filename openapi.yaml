@@ -98,7 +98,7 @@ paths:
       description: Update User
       operationId: updateUser
       parameters:
-        - name: ID
+        - name: _id
           in: path
           description: 'Masukkan ID user yang ingin di update.'
           required: true
