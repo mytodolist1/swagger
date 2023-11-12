@@ -97,18 +97,18 @@ paths:
       summary: Update User
       description: Update User
       operationId: updateUser
-      # parameters:
-      #   - name: _id
-      #     in: path
-      #     description: 'Masukkan ID user yang ingin di update.'
-      #     required: true
-      #     schema:
-      #       type: ObjectId
+      parameters:
+        - name: _id
+          in: path
+          description: 'Masukkan ID user yang ingin di update.'
+          required: true
+          schema:
+            type: ObjectId
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/UpdateUser'
       responses:
         '200':
           description: successful operation
@@ -137,7 +137,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/ChangePassUser'
       responses:
         '200':
           description: successful operation
@@ -244,6 +244,26 @@ components:
         role:
           type: string
           example: user
+
+    UpdateUser:
+      type: object
+      properties:
+        email:
+          type: string
+          example: tejoko@gmail.com
+        username:
+          type: string
+          example: tejoko
+
+    ChangePassUser:
+      type: object
+      properties:
+        username:
+          type: string
+          example: tejoko
+        password:
+          type: string
+          example: secret
 
     UserResponse:
       type: object
