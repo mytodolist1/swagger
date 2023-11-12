@@ -103,7 +103,7 @@ paths:
           description: 'Masukkan ID user yang ingin di update.'
           required: true
           schema:
-            type: ObjectId
+            type: string
       requestBody:
         content:
           application/json:
