@@ -97,13 +97,13 @@ paths:
       summary: Update User
       description: Update User
       operationId: updateUser
-      parameters:
-        - name: _id
-          in: path
-          description: 'Masukkan ID user yang ingin di update.'
-          required: true
-          schema:
-            type: ObjectId
+      # parameters:
+      #   - name: _id
+      #     in: path
+      #     description: 'Masukkan ID user yang ingin di update.'
+      #     required: true
+      #     schema:
+      #       type: ObjectId
       requestBody:
         content:
           application/json:
