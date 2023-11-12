@@ -261,9 +261,9 @@ components:
     ChangePassUser:
       type: object
       properties:
-        # username:
-        #   type: string
-        #   example: tejoko
+        username:
+          type: string
+          example: tejoko
         password:
           type: string
           example: secret
