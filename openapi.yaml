@@ -235,12 +235,12 @@ paths:
             - read: apiKey
 components:
   schemas:
-  GetUser:
-      type: object
-      properties:
-        username:
-          type: string
-          example: tejoko
+    GetUser:
+        type: object
+        properties:
+          username:
+            type: string
+            example: tejoko
 
     User:
       type: object
