@@ -27,22 +27,22 @@ tags:
     description: Data Todo
 
 paths:
-  # /mytodolist:
-  #   get:
-  #     tags:
-  #       - User
-  #     summary: Get all users
-  #     description: Get semua user
-  #     operationId: getAllUsers
-  #     responses:
-  #       '200':
-  #         description: successful operation
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: '#/components/schemas/User'
-
   /mytodolist:
+    get:
+      tags:
+        - User
+      summary: Get all users
+      description: Get semua user
+      operationId: getAllUsers
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /mytodolist-GetUserByUsername:
     get:
       tags:
         - User
@@ -51,7 +51,7 @@ paths:
       operationId: getUserByUsername
       parameters:
         - name: username
-          in: query
+          in: path
           description: 'Masukkan username yang terdaftar.'
           required: true
           schema:
