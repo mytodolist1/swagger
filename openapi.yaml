@@ -42,7 +42,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
 
-  /mytodolist-GetUserByUsername:
+  /mytodolist/{username}:
     get:
       tags:
         - User
@@ -51,7 +51,7 @@ paths:
       operationId: getUserByUsername
       parameters:
         - name: username
-          in: path
+          in: query
           description: 'Masukkan username yang terdaftar.'
           required: true
           schema:
@@ -62,11 +62,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'          
-        '400':
-          description: Invalid username supplied
-        '404':
-          description: User not found
+                $ref: '#/components/schemas/User'
 
   /mytodolist-register:
     post:
