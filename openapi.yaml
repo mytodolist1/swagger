@@ -42,7 +42,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
 
-  /mytodolist-GetUserByUsername/{username}:
+  /mytodolist-GetUserByUsername:
     get:
       tags:
         - User
