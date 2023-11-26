@@ -95,7 +95,7 @@ paths:
       operationId: updateUser
       parameters:
         - name: _id
-          in: path
+          in: query
           description: 'Masukkan ID user yang ingin di update.'
           required: true
           schema:
@@ -124,7 +124,7 @@ paths:
       operationId: changePassword
       parameters:
         - name: username
-          in: path
+          in: query
           description: 'Masukkan username user yang ingin di ganti passwordnya.'
           required: true
           schema:
@@ -153,16 +153,11 @@ paths:
       operationId: deleteUser
       parameters:
         - name: username
-          in: path
+          in: query
           description: 'Masukkan username user yang ingin di hapus.'
           required: true
           schema:
             type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
       responses:
         '200':
           description: successful operation
@@ -249,9 +244,6 @@ components:
     UpdateUser:
       type: object
       properties:
-        _id:
-          type: string
-          example: 6550a8f0b5b4a0a7f89941aa
         email:
           type: string
           example: tejoko@gmail.com
@@ -262,9 +254,6 @@ components:
     ChangePassUser:
       type: object
       properties:
-        username:
-          type: string
-          example: tejoko
         password:
           type: string
           example: secret
