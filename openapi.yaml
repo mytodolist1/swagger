@@ -12,7 +12,7 @@ info:
   license:
     name: Mytodolist Package
     url: https://pkg.go.dev/github.com/mytodolist1/be_p3
-  version: 0.2.4
+  version: 0.2.902
 externalDocs:
   description: Repo GCF
   url: https://mytodolist1.github.io/cloudfunction_todo/
@@ -309,7 +309,7 @@ paths:
   /mytodolist_deleteTodo:
     delete:
       tags:
-        - User
+        - Todo
       summary: Delete User
       description: Delete User
       operationId: deleteUser
