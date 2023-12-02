@@ -451,6 +451,9 @@ components:
         password:
           type: string
           example: secret
+        Role:
+          type: string
+          example: user
 
     AuthResponse:
       type: object
