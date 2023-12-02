@@ -368,6 +368,9 @@ components:
         password:
           type: string
           example: secret
+        confirmpassword:
+          type: string
+          example: secret
 
     UserResponse:
       type: object
