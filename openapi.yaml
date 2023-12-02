@@ -352,6 +352,9 @@ components:
         password:
           type: string
           example: secret
+        confirmpassword:
+          type: string
+          example: secret
         role:
           type: string
           example: user
