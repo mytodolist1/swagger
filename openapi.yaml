@@ -24,7 +24,7 @@ tags:
   - name: Auth
     description: Auth to Access to API
   - name: Todo
-    description: Data Todosers
+    description: Data Todo List User
 
 paths:
   /mytodolist:
@@ -70,7 +70,7 @@ paths:
         - User
       summary: Register User
       description: Register User
-      operationId: registerUser
+      operationId: register
       requestBody:
         content:
           application/json:
@@ -125,7 +125,7 @@ paths:
         - User
       summary: Change Password
       description: Change Password
-      operationId: changePassword
+      operationId: changepass
       parameters:
         - name: username
           in: query
@@ -158,7 +158,7 @@ paths:
         - User
       summary: Delete User
       description: Delete User
-      operationId: deleteUser
+      operationId: deleteuser
       parameters:
         - name: username
           in: query
@@ -186,7 +186,7 @@ paths:
         - Auth
       summary: Login get Token
       description: Login and Get User Token
-      operationId: authService
+      operationId: login
       requestBody:
         content:
           application/json:
@@ -212,7 +212,7 @@ paths:
         - Todo
       summary: Post Todo
       description: Insert Todo
-      operationId: InsertTodo
+      operationId: insertTodo
       requestBody:
         content:
           application/json:
@@ -281,9 +281,9 @@ paths:
     put:
       tags:
         - Todo
-      summary: Update User
-      description: Update User
-      operationId: updateUser
+      summary: Update Todo
+      description: Update Todo
+      operationId: updateTodo
       parameters:
         - name: _id
           in: query
@@ -314,9 +314,9 @@ paths:
     delete:
       tags:
         - Todo
-      summary: Delete User
-      description: Delete User
-      operationId: deleteUser
+      summary: Delete Todo
+      description: Delete Todo
+      operationId: deleteTodo
       parameters:
         - name: _id
           in: query
