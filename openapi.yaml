@@ -488,5 +488,5 @@ components:
   securitySchemes:
     token:
       type: apiKey
-      name: token
+      name: Authorization
       in: header
