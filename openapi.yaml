@@ -202,7 +202,7 @@ paths:
             - write: apiKey
             - read: apiKey
 
-  /mytodolist-post/todo:
+  /mytodolist-insertTodo:
     post:
       tags:
         - Todo
@@ -227,6 +227,113 @@ paths:
         - token:
             - write: apiKey
             - read: apiKey
+
+  /mytodolist-getTodo:
+    get:
+      tags:
+        - Todo
+      summary: Get All Todo
+      description: Get semua Data
+      operationId: getTodo
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+      security:
+        - token:
+            - write: apiKey
+            - read: apiKey
+
+  /mytodolist-getTodoByID:
+    get:
+      tags:
+        - Todo
+      summary: Get Todo
+      description: Get todo berdasarkan ID
+      operationId: getTodoByID
+      parameters:
+        - name: _id
+          in: query
+          description: 'Masukkan _id yang terdaftar.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+      security:
+        - token:
+            - write: apiKey
+            - read: apiKey
+
+    /mytodolist-updateTodo:
+    put:
+      tags:
+        - Todo
+      summary: Update User
+      description: Update User
+      operationId: updateUser
+      parameters:
+        - name: _id
+          in: query
+          description: 'Masukkan ID user yang ingin di update.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoResponse'
+        '405':
+          description: Invalid input
+      security:
+        - token:
+            - write: apiKey
+            - read: apiKey
+
+  /mytodolist_deleteTodo:
+    delete:
+      tags:
+        - User
+      summary: Delete User
+      description: Delete User
+      operationId: deleteUser
+      parameters:
+        - name: _id
+          in: query
+          description: 'Masukkan ID yang ingin di hapus.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoResponse'
+        '405':
+          description: Invalid input
+      security:
+        - token:
+            - write: apiKey
+            - read: apiKey
+
 components:
   schemas:
     User:
@@ -293,9 +400,37 @@ components:
           type: string
         description:
           type: string
+        deadline:
+          type: string
+          example: 02/02/2021
         isdone:
           type: bool
+          example: false
+
+    TodoResponse:
+      type: object
+      properties:
+        status:
+          type: bool
           example: true
+        message:
+          type: string
+          example: fehguy
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+            title:
+              type: string
+            description:
+              type: string
+            deadline:
+              type: string
+              example: 02/02/2021
+            isdone:
+              type: bool
+              example: false
 
     Auth:
       type: object
