@@ -277,7 +277,7 @@ paths:
             - write: apiKey
             - read: apiKey
 
-    /mytodolist-updateTodo:
+  /mytodolist-updateTodo:
     put:
       tags:
         - Todo
