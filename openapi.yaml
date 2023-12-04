@@ -93,13 +93,6 @@ paths:
       summary: Get user By Token
       description: Get user berdasarkan token
       operationId: getUserByToken
-      parameters:
-        - name: uid
-          in: query
-          description: 'Masukkan uid yang terdaftar.'
-          required: true
-          schema:
-            type: string
       responses:
         '200':
           description: successful operation
