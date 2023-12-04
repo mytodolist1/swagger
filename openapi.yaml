@@ -64,7 +64,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
 
-  /mytodolist-GetUserByID:
+  /mytodolist-getUserByID:
     get:
       tags:
         - User
@@ -86,7 +86,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/User'
 
-  /mytodolist-GetUserByToken:
+  /mytodolist-getUserByToken:
     get:
       tags:
         - User
