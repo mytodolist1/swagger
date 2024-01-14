@@ -19,91 +19,45 @@ externalDocs:
 servers:
   - url: https://asia-southeast2-mytodolist-402507.cloudfunctions.net
 tags:
-  - name: User
-    description: Data User
   - name: Auth
     description: Auth to Access to API
+  - name: User
+    description: Data User
   - name: Todo
     description: Data Todo List User
+  - name: Todo Category
+    description: Data Todo List Category User
+  - name: Todo Clear
+    description: Data Todo List Clear User
+  - name: Log Todo
+    description: Data Log Todo List User
 
 paths:
-  /mytodolist:
-    get:
+  /mytodolist-login:
+    post:
       tags:
-        - User
-      summary: Get All User
-      description: Get semua user
-      operationId: getAllUser
+        - Auth
+      summary: Login get Token
+      description: Login and Get User Token
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Auth'
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
-
-  /mytodolist-GetUserByUsername:
-    get:
-      tags:
-        - User
-      summary: Get user
-      description: Get user berdasarkan username
-      operationId: getUserByUsername
-      parameters:
-        - name: username
-          in: query
-          description: 'Masukkan username yang terdaftar.'
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-
-  /mytodolist-getUserByID:
-    get:
-      tags:
-        - User
-      summary: Get user By ID
-      description: Get user berdasarkan id
-      operationId: getUserByID
-      parameters:
-        - name: _id
-          in: query
-          description: 'Masukkan id yang terdaftar.'
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-
-  /mytodolist-getUserByToken:
-    get:
-      tags:
-        - User
-      summary: Get user By Token
-      description: Get user berdasarkan token
-      operationId: getUserByToken
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/AuthResponse'
+        '405':
+          description: Invalid input
       security:
         - token:
-          - write: apiKey
-          - read: apiKey
+            - write: apiKey
+            - read: apiKey
 
   /mytodolist-register:
     post:
@@ -127,7 +81,47 @@ paths:
         '405':
           description: Invalid input
 
-  /mytodolist-updateUser:
+  /mytodolist:
+    get:
+      tags:
+        - User
+      summary: Get All User
+      description: Get semua user
+      operationId: getAllUser
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+      security:
+        - token:
+            - write: apiKey
+            - read: apiKey
+  
+  /mytodolist-user/{_id}:
+    get:
+      tags:
+        - User
+      summary: Get user By ID
+      description: Get user berdasarkan id
+      operationId: getUserByID
+      parameters:
+        - name: _id
+          in: query
+          description: 'Masukkan id yang terdaftar.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+
     put:
       tags:
         - User
@@ -160,7 +154,28 @@ paths:
             - write: apiKey
             - read: apiKey
 
-  /mytodolist-changepass:
+  /mytodolist-user/{username}:
+    get:
+      tags:
+        - User
+      summary: Get user By Username
+      description: Get user berdasarkan username
+      operationId: getUserByUsername
+      parameters:
+        - name: username
+          in: query
+          description: 'Masukkan username yang terdaftar.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+    
     put:
       tags:
         - User
@@ -193,7 +208,6 @@ paths:
             - write: apiKey
             - read: apiKey
 
-  /mytodolist-deleteuser:
     delete:
       tags:
         - User
@@ -221,33 +235,45 @@ paths:
             - write: apiKey
             - read: apiKey
 
-  /mytodolist-login:
-    post:
+  /mytodolist-user:
+    get:
       tags:
-        - Auth
-      summary: Login get Token
-      description: Login and Get User Token
-      operationId: login
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Auth'
+        - User
+      summary: Get user
+      description: Get user berdasarkan token
+      operationId: getUserByToken
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthResponse'
-        '405':
-          description: Invalid input
+                $ref: '#/components/schemas/UserResponse'
+      security:
+        - token:
+          - write: apiKey
+          - read: apiKey
+
+  /mytodolist-getTodolist:
+    get:
+      tags:
+        - Todo
+      summary: Get All Todo
+      description: Get semua Data
+      operationId: getTodo
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoResponse'
       security:
         - token:
             - write: apiKey
             - read: apiKey
 
-  /mytodolist-insertTodo:
+  /mytodolist-todo:
     post:
       tags:
         - Todo
@@ -265,7 +291,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthResponse'
+                $ref: '#/components/schemas/TodoResponse'
         '405':
           description: Invalid input
       security:
@@ -273,30 +299,29 @@ paths:
             - write: apiKey
             - read: apiKey
 
-  /mytodolist-getTodo:
     get:
       tags:
         - Todo
-      summary: Get All Todo
-      description: Get semua Data
-      operationId: getTodo
+      summary: Get todo
+      description: Get todo berdasarkan token
+      operationId: gettodoByToken
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Todo'
+                $ref: '#/components/schemas/TodoResponse'
       security:
         - token:
-            - write: apiKey
-            - read: apiKey
+          - write: apiKey
+          - read: apiKey
 
-  /mytodolist-getTodoByID:
+  /mytodolist-todo/{_id}:
     get:
       tags:
         - Todo
-      summary: Get Todo
+      summary: Get Todo By ID
       description: Get todo berdasarkan ID
       operationId: getTodoByID
       parameters:
@@ -312,13 +337,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Todo'
+                $ref: '#/components/schemas/TodoResponse'
       security:
         - token:
             - write: apiKey
             - read: apiKey
 
-  /mytodolist-updateTodo:
     put:
       tags:
         - Todo
@@ -351,7 +375,6 @@ paths:
             - write: apiKey
             - read: apiKey
 
-  /mytodolist_deleteTodo:
     delete:
       tags:
         - Todo
@@ -379,6 +402,121 @@ paths:
             - write: apiKey
             - read: apiKey
 
+  /mytodolist-category:
+    get:
+      tags:
+        - Todo Category
+      summary: Get Category
+      description: Get category
+      operationId: getCategory
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryResponse'
+      security:
+        - token:
+          - write: apiKey
+          - read: apiKey
+
+  /mytodolist-category/{category}:
+    get:
+      tags:
+        - Todo Category
+      summary: Get todo By Category
+      description: Get todo berdasarkan category
+      operationId: gettodoByCategory
+      parameters:
+        - name: category
+          in: query
+          description: 'Masukkan category yang terdaftar.'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoResponse'
+      security:
+        - token:
+          - write: apiKey
+          - read: apiKey
+
+  /mytodolist-tododone:
+    get:
+      tags:
+        - Todo Clear
+      summary: Get todo done
+      description: Get todo done
+      operationId: gettododone
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoDoneResponse'
+      security:
+        - token:
+          - write: apiKey
+          - read: apiKey
+
+    post:
+      tags:
+        - Todo Clear
+      summary: Post Todo Done
+      description: Insert Todo Done
+      operationId: insertTodoDone
+      parameters:
+        - name: _id
+          in: query
+          description: 'Masukkan _id yang terdaftar.'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TodoDone'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoDoneResponse'
+        '405':
+          description: Invalid input
+      security:
+        - token:
+            - write: apiKey
+            - read: apiKey
+
+  /mytodolist-logTodo:
+    get:
+      tags:
+        - Log Todo
+      summary: Get Log Todo
+      description: Get Log Todo
+      operationId: getlogtodo
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogTodoResponse'
+      security:
+        - token:
+          - write: apiKey
+          - read: apiKey
+
 components:
   schemas:
     User:
@@ -386,19 +524,19 @@ components:
       properties:
         email:
           type: string
-          example: tejoko@gmail.com
+          example: budiman@gmail.com
+        phonenumber:
+          type: string
+          example: 628123456789
         username:
           type: string
-          example: tejoko
+          example: budiman
         password:
           type: string
           example: secret
         confirmpassword:
           type: string
           example: secret
-        role:
-          type: string
-          example: user
 
     UpdateUser:
       type: object
@@ -434,6 +572,8 @@ components:
           properties:
             email:
               type: string
+            phonenumber:
+              type: string
             username:
               type: string
             password:
@@ -452,9 +592,14 @@ components:
         deadline:
           type: string
           example: 02/02/2021
-        isdone:
-          type: bool
-          example: false
+        time:
+          type: string
+          example: 11:00 AM
+        tags:
+          type: object
+          properties:
+            category:
+              type: string
 
     TodoResponse:
       type: object
@@ -475,9 +620,68 @@ components:
             deadline:
               type: string
               example: 02/02/2021
+            time:
+              type: string
+              example: 11:00 AM
             isdone:
               type: bool
               example: false
+
+    TodoDone:
+      type: object
+      properties:
+        isdone:
+          type: bool
+        timeclear:
+          type: integer
+        todo:
+          type: object
+
+    TodoDoneResponse:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: fehguy
+        data:
+          type: object
+          properties:
+            isdone:
+              type: bool
+            timeclear:
+              type: integer
+            todo:
+              type: object
+
+    CategoryResponse:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: fehguy
+        datatags:
+          type: object
+          properties:
+            category:
+              type: string
+
+    LogTodoResponse:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: fehguy
+        data:
+          type: object
 
     Auth:
       type: object
